@@ -114,4 +114,30 @@ function SiPuede(m,x,y,camino) {
 }
 
 
+find(m, coordenadaPartida[0], 0, coordenadaTermino, camino)
+console.log(caminos);
 
+var n=0
+var cami = []
+function  separaCamino(camino){
+    var cas
+    if(n>=caminos.length){
+        return cas
+    }
+    else{
+        cas = caminos[n].join("; ")
+        cami.push(cas)
+        n++
+    }return separaCamino(camino)
+}
+
+separaCamino(caminos)
+var cam = cami.join("\n")
+console.log(cami)
+
+
+var fileout = './output.txt';
+fs.writeFile(fileout, cam.toString(), function (err) {
+        if (err) {console.log(err);}
+    }
+)
